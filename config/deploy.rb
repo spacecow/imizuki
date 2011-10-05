@@ -1,22 +1,28 @@
-set :application, "set your application name here"
-set :repository,  "set your repository location here"
+default_run_options[:pty] = true
+set :repository,  "git@github.com:spacecow/imizuki.git"
+set :scm, "git"
+set :branch, "master"
+set :deploy_via, :remote_cache
+set :use_sudo, false
 
-set :scm, :subversion
-# Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
+set :application, "imizuki"
+set :deploy_to, "/home/aurora/apps/#{application}"
+set :user, "aurora"
+set :admin_runner, "aurora"
+  
+role :app, "sao.fir-vpc.riec.tohoku.ac.jp"
+role :web, "sao.fir-vpc.riec.tohoku.ac.jp"
+role :db,  "sao.fir-vpc.riec.tohoku.ac.jp", :primary => true
 
-role :web, "your web-server here"                          # Your HTTP server, Apache/etc
-role :app, "your app-server here"                          # This may be the same as your `Web` server
-role :db,  "your primary db-server here", :primary => true # This is where Rails migrations will run
-role :db,  "your slave db-server here"
+namespace :deploy do
+  task :start do ; end
+  task :stop do ; end
+  task :restart, :roles => :app, :except => { :no_release => true } do
+    run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
+  end
+  task :symlink_shared do
+    run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+  end
+end
 
-# If you are using Passenger mod_rails uncomment this:
-# if you're still using the script/reapear helper you will need
-# these http://github.com/rails/irs_process_scripts
-
-# namespace :deploy do
-#   task :start do ; end
-#   task :stop do ; end
-#   task :restart, :roles => :app, :except => { :no_release => true } do
-#     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
-#   end
-# end
+after 'deploy:update_code', 'deploy:symlink_shared'
