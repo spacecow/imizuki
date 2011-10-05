@@ -2,4 +2,6 @@ en:
   event: "Event"
   label:
     create: "Create %{obj}"
+  messages:
+    sure?: "Are you sure?"
     

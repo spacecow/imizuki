@@ -2,10 +2,19 @@ require 'spec_helper'
 
 describe "Events" do
   describe "GET /events" do
-    it "works! (now write some real specs)" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-      get events_path
-      response.status.should be(200)
+    before(:each) do
+      Event.create!(:title => "Opening")
+      visit events_path
+    end
+
+    it "list events" do
+      page.should have_content("Opening")
+    end
+
+    it "delete an event" do
+      lambda do
+        click_link "Del" 
+      end.should change(Event, :count).by(-1)
     end
   end
 
