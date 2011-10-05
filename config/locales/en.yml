@@ -1,0 +1,5 @@
+en:
+  event: "Event"
+  label:
+    create: "Create %{obj}"
+    
