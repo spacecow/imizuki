@@ -1,8 +1,9 @@
 <div class="table">
   <% @events.each do |event| %>
     <div class="row">
-      <span><%= event.title %></span>
-      <span><%= link_to "Del", event, :confirm => sure?, :method => :delete %></span>
+      <span><%= link_to event.title, event %></span>
+      <span class="action"><%= link_to t(:edit), edit_event_path(event) if can? :edit, Event %>
+      <span class="action"><%= link_to t(:del), event, :confirm => sure?, :method => :delete if can? :delete, Event %></span>
     </div>
   <% end %>
 </div>

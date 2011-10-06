@@ -1,0 +1,4 @@
+<%= semantic_form_for @event do |f| %>
+  <%= f.input :title %>
+  <%= f.submit either_of(@event.new_record?,create(:event),update(:event)) %>
+<% end %>

@@ -1,7 +1,10 @@
 en:
+  del: "Del"
+  edit: "Edit"
   event: "Event"
   label:
     create: "Create %{obj}"
+    update: "Update %{obj}"
   messages:
     sure?: "Are you sure?"
     
