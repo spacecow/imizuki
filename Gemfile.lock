@@ -28,6 +28,7 @@ GEM
       activemodel (= 3.0.10)
       activesupport (= 3.0.10)
     activesupport (3.0.10)
+    annotate (2.4.0)
     arel (2.0.10)
     builder (2.1.2)
     cancan (1.6.7)
@@ -134,6 +135,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotate
   cancan
   capistrano
   capybara

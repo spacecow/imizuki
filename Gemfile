@@ -6,6 +6,7 @@ gem 'mysql2', '~> 0.2.11'
 gem 'cancan'
 gem 'escape_utils'
 gem 'capistrano'
+gem 'annotate'
 
 group :development do
   gem "rspec-rails"
