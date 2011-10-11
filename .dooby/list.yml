@@ -1,7 +1,7 @@
 --- 
 a558ad: !ruby/object:Dooby::Task 
   todo: update iphone list after adding :done
-175d9d: !ruby/object:Dooby::Task 
-  todo: update iphone list after editing :doing
 6233c6: !ruby/object:Dooby::Task 
   todo: deselect row after edit
+eba560: !ruby/object:Dooby::Task 
+  todo: update iphone list after editing :done

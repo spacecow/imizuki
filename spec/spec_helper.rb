@@ -18,3 +18,11 @@ end
 Spork.each_run do
   FactoryGirl.reload
 end
+
+def controller_actions(controller)
+  Rails.application.routes.routes.inject({}) do |hash, route|
+    hash[route.requirements[:action]] = route.verb.downcase if route.requirements[:controller] == controller && !route.verb.nil?
+    hash
+  end
+end
+
