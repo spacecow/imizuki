@@ -3,7 +3,7 @@
     <div class="row">
       <span><%= link_to event.title, event %></span>
       <span class="action"><%= link_to t(:edit), edit_event_path(event) if can? :edit, Event %>
-      <span class="action"><%= link_to t(:del), event, :confirm => sure?, :method => :delete if can? :destroy, Event %></span>
+      <span class="action"><%= link_to t(:del), event, :confirm => sure?, :method => :delete if can? :show, Event %></span>
     </div>
   <% end %>
 </div>
