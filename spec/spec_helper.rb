@@ -26,3 +26,9 @@ def controller_actions(controller)
   end
 end
 
+def login(username,password)
+  visit login_path
+  fill_in "Login", :with => username
+  fill_in "Password", :with => password
+  click_button "Login"
+end

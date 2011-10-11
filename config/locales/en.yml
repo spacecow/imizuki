@@ -2,7 +2,9 @@ en:
   del: "Del"
   edit: "Edit"
   event: "Event"
-  label:
+  login: "Login"
+  password: "Password"
+  labels:
     create: "Create %{obj}"
     update: "Update %{obj}"
   messages:

@@ -5,3 +5,5 @@ a558ad: !ruby/object:Dooby::Task
   todo: deselect row after edit
 eba560: !ruby/object:Dooby::Task 
   todo: update iphone list after editing :done
+d96cb9: !ruby/object:Dooby::Task 
+  todo: authenticate delete :done

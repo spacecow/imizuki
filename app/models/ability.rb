@@ -2,6 +2,9 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    can [:view,:create,:update], Event
+    can [:show,:index,:create,:update], Event
+    if user
+      can :destroy, Event
+    end
   end
 end

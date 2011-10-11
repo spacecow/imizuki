@@ -11,7 +11,10 @@ describe "Events" do
       page.should have_content("Opening")
     end
 
-    it "delete an event" do
+    it "delete an event", :focus => true do
+      User.create!(:username => "test", :password => "secret")
+      login("test","secret")
+      visit events_path
       lambda do
         click_link "Del" 
       end.should change(Event, :count).by(-1)

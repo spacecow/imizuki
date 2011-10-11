@@ -7,6 +7,7 @@ gem 'cancan'
 gem 'escape_utils'
 gem 'capistrano'
 gem 'annotate'
+gem 'bcrypt-ruby', :require => 'bcrypt'
 
 group :development do
   gem "rspec-rails"
