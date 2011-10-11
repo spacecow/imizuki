@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "Events" do
   describe "GET /events" do
     before(:each) do
-      @event = Event.create!(:title => "Opening")
+      @event = Event.create(:title => "Opening")
       visit events_path
     end
 
@@ -11,7 +11,7 @@ describe "Events" do
       page.should have_content("Opening")
     end
 
-    it "delete an event", :focus => true do
+    it "delete an event" do
       User.create!(:username => "test", :password => "secret")
       login("test","secret")
       visit events_path

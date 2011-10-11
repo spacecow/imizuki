@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  http_basic_authenticate_with :name => "frodo", :password => "thering", :only => :destroy
   load_and_authorize_resource
 
   def show

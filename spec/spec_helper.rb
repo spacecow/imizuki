@@ -21,7 +21,9 @@ end
 
 def controller_actions(controller)
   Rails.application.routes.routes.inject({}) do |hash, route|
-    hash[route.requirements[:action]] = route.verb.downcase if route.requirements[:controller] == controller && !route.verb.nil?
+    if route.requirements[:controller] == controller && !route.verb.nil?
+      hash[route.requirements[:action]] = route.verb.downcase.empty? ? "get" : route.verb.downcase
+    end
     hash
   end
 end

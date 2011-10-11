@@ -3,3 +3,5 @@ log/*.log
 tmp/
 config/database.yml
 *.swp
+*.swo
+.sass-cache/
