@@ -19,9 +19,7 @@ class ApplicationController < ActionController::Base
   private
 
     def authenticate
-      p Rails.env.test?
       unless current_user || Rails.env.test?
-        p "inside"
         authenticate_or_request_with_http_basic do |username,password|
           @user = User.authenticate(username,password)
           session[:user_id] = @user.id
