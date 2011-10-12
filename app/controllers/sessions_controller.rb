@@ -18,6 +18,10 @@ class SessionsController < ApplicationController
   end
 
   def iphone
+    if @user
+      session[:user_id] = @user.id
+      redirect_to root_path
+    end
   end
 
   private
