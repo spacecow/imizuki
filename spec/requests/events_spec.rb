@@ -12,7 +12,7 @@ describe "Events" do
     end
 
     it "delete an event" do
-      User.create!(:username => "test", :password => "secret")
+      user = User.create!(:username => "test", :password => "secret")
       login("test","secret")
       visit events_path
       lambda do

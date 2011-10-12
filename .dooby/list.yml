@@ -7,3 +7,5 @@ eba560: !ruby/object:Dooby::Task
   todo: update iphone list after editing :done
 d96cb9: !ruby/object:Dooby::Task 
   todo: authenticate delete :done
+5d6ca8: !ruby/object:Dooby::Task 
+  todo: someone adding an event during iphone is adding - error
