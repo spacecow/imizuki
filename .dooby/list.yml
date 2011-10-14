@@ -13,7 +13,9 @@ d96cb9: !ruby/object:Dooby::Task
   todo: attr_accessible on event/picture
 "717632": !ruby/object:Dooby::Task 
   todo: make sure pictures are deleted when an event is deleted
-143d6e: !ruby/object:Dooby::Task 
-  todo: first image should be selected by default :doing
 f5fbc2: !ruby/object:Dooby::Task 
   todo: first image should be selected by default :done
+2f01b9: !ruby/object:Dooby::Task 
+  todo: |
+    iphone dies when trying to edit (something that has been edited by pc?)
+
