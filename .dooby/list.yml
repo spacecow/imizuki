@@ -11,7 +11,9 @@ d96cb9: !ruby/object:Dooby::Task
   todo: someone adding an event during iphone is adding - error
 2b18d8: !ruby/object:Dooby::Task 
   todo: attr_accessible on event/picture
-9c8686: !ruby/object:Dooby::Task 
-  todo: upload an image :doing
 "717632": !ruby/object:Dooby::Task 
   todo: make sure pictures are deleted when an event is deleted
+143d6e: !ruby/object:Dooby::Task 
+  todo: first image should be selected by default :doing
+f5fbc2: !ruby/object:Dooby::Task 
+  todo: first image should be selected by default :done
