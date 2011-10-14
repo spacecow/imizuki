@@ -6,6 +6,7 @@ en:
   password: "Password"
   labels:
     create: "Create %{obj}"
+    new: "New %{obj}"
     update: "Update %{obj}"
   messages:
     sure?: "Are you sure?"

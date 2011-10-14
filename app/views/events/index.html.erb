@@ -6,4 +6,5 @@
       <span class="action"><%= link_to t(:del), event, :confirm => sure?, :method => :delete if can? :destroy, Event %></span>
     </div>
   <% end %>
+  <%= link_to new(:event), new_event_path %>
 </div>

@@ -33,28 +33,82 @@ describe "Events" do
         click_link "Edit"
         page.current_path.should == edit_event_path(@event)
       end
+
+      it "add an event" do
+        click_link "New Event"
+        page.current_path.should == new_event_path
+      end
     end
   end
 
   describe "POST /events" do
-    it "creates a new event" do
-      login_and_create_user("test","secret")
-      visit new_event_path
-      lambda do
-        fill_in :title, :with => "Rspec Title"
-        click_button "Create Event"
-      end.should change(Event, :count).by(1)
+    context "creates a new event" do
+      before(:each) do
+        login_and_create_user("test","secret")
+        visit new_event_path
+      end
+
+      it "with title" do
+        lambda do
+          fill_in "Title", :with => "Rspec Title"
+          click_button "Create Event"
+        end.should change(Event, :count).by(1)
+        Event.last.title.should == "Rspec Title"
+      end
+
+      it "with an image" do
+        lambda do
+          attach_file("Image", File.expand_path("app/assets/images/rails.png"))
+          fill_in "Caption", :with => "Rspec Caption"
+          click_button "Create Event"
+        end.should change(Event, :count).by(1)
+        Picture.last.filename.should == "rails.png"
+        Picture.last.caption.should == "Rspec Caption"
+      end
     end
   end
 
   describe "PUT /events" do
-    it "edit an event" do
+    before(:each) do
       login_and_create_user("test","secret")
-      @event = Event.create!(:title => "Opening")
-      visit edit_event_path(@event)
-      fill_in :title, :with => "Ending"
+    end
+
+    it "edit an event" do
+      event = Event.create!(:title => "Opening")
+      visit edit_event_path(event)
+      fill_in "Title", :with => "Ending"
       click_button "Update Event"
       Event.find_by_title("Ending").should_not be(nil)
+    end
+
+    context "attached pictures" do
+      before(:each) do
+        @event = Event.create!(:title => "Opening")
+        @pic1 = Picture.create!(:image => File.open("spec/rails.png"), :event_id => @event.id)
+        @pic2 = Picture.create!(:image => File.open("spec/rails2.png"), :event_id => @event.id)
+      end
+
+      it "display" do
+        visit edit_event_path(@event)
+        fieldset("image",0).should have_content("rails.png")
+        fieldset("image",1).should have_content("rails2.png")
+      end
+
+      context "indicate main picture as" do
+        it "the first" do
+          @event.update_attribute(:main_picture_id, @pic1.id) 
+          visit edit_event_path(@event)
+          radio(:within => fieldset("image",0)).should be_checked
+          radio(:within => fieldset("image",1)).should_not be_checked
+        end
+
+        it "the second" do
+          @event.update_attribute(:main_picture_id, @pic2.id) 
+          visit edit_event_path(@event)
+          radio(:within => fieldset("image",0)).should_not be_checked
+          radio(:within => fieldset("image",1)).should be_checked
+        end
+      end
     end
   end
 end
