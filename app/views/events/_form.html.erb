@@ -2,7 +2,7 @@
   <%= f.input :title %>
   <% @event.pictures.each_with_index do |picture,i| %>
     <%= f.inputs :for => [:pictures,picture], :class => :image do |ref| %>
-      <%= f.input :main_picture_id, :as => :radio, :collection => [["Main Picture",i]] %>
+      <%= f.input :main_picture_no, :as => :radio, :collection => [["Main Picture",i]] %>
       <%= ref.input :image, :as => :file %>
       <%= picture.filename %>
       <%= ref.input :caption %>

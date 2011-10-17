@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(:version => 20111014054108) do
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "main_picture_id", :default => 0
+    t.integer  "main_picture_no", :default => 0
   end
 
   create_table "pictures", :force => true do |t|

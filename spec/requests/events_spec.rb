@@ -54,7 +54,7 @@ describe "Events" do
           click_button "Create Event"
         end.should change(Event, :count).by(1)
         Event.last.title.should == "Rspec Title"
-        Event.last.main_picture_id.should be(nil)
+        Event.last.main_picture_no.should be(nil)
       end
 
       it "with an image" do
@@ -66,7 +66,8 @@ describe "Events" do
         pic = Picture.last
         pic.filename.should == "rails.png"
         pic.caption.should == "Rspec Caption"
-        Event.last.main_picture_id.should be(0)
+        Event.last.main_picture_no.should be(0)
+
       end
     end
   end
@@ -99,14 +100,14 @@ describe "Events" do
 
       context "indicate main picture as" do
         it "the first" do
-          @event.update_attribute(:main_picture_id, 0) 
+          @event.update_attribute(:main_picture_no, 0) 
           visit edit_event_path(@event)
           radio(:within => fieldset("image",0)).should be_checked
           radio(:within => fieldset("image",1)).should_not be_checked
         end
 
         it "the second" do
-          @event.update_attribute(:main_picture_id, 1) 
+          @event.update_attribute(:main_picture_no, 1) 
           visit edit_event_path(@event)
           radio(:within => fieldset("image",0)).should_not be_checked
           radio(:within => fieldset("image",1)).should be_checked
