@@ -1,11 +1,8 @@
 <%= semantic_form_for @event, :html => {:multipart => true} do |f| %>
   <%= f.input :title %>
-  <% @event.pictures.each_with_index do |picture,i| %>
-    <%= f.inputs :for => [:pictures,picture], :class => :image do |ref| %>
-      <%= f.input :main_picture_no, :as => :radio, :collection => [["Main Picture",i]] %>
-      <%= ref.input :image, :as => :file %>
-      <%= picture.filename %>
-      <%= ref.input :caption %>
+  <% @event.pictures.each_with_index do |pic,i| %>
+    <%= f.inputs :for => [:pictures,pic], :class => :image do |f2| %>
+      <%= render "events/picture_fields", :f => f, :f2 => f2, :i => i %>
     <% end %>
   <% end %>
   <%= f.submit either_of(@event.new_record?,create(:event),update(:event)) %>

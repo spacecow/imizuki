@@ -18,15 +18,18 @@ class EventsController < ApplicationController
 
   def create
     if @event.save
+      nullify_main_picture_no if @event.pictures.empty?
       redirect_to events_path
     end
   end
 
   def edit
+    @event.pictures.build
   end
 
   def update
     if @event.update_attributes params[:event]
+      nullify_main_picture_no if @event.pictures.empty?
       redirect_to events_path
     end
   end
@@ -35,4 +38,10 @@ class EventsController < ApplicationController
     @event.destroy
     redirect_to events_path
   end
+  
+  private
+
+    def nullify_main_picture_no
+      @event.update_attribute(:main_picture_no, nil) 
+    end
 end
