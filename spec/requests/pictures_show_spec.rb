@@ -22,6 +22,7 @@ describe "Pictures" do
 
       it "can go to the edit page" do
         click_link "Edit"
+        page.current_path.should == edit_picture_path(@pic)
       end
     end
   end

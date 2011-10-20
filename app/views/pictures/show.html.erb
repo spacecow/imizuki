@@ -1,1 +1,1 @@
-<%= link_to t(:edit) if can? :edit, Picture %>
+<%= link_to t(:edit), edit_picture_path(@picture) if can? :edit, Picture %>

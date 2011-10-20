@@ -4,6 +4,7 @@ en:
   event: "Event"
   login: "Login"
   password: "Password"
+  picture: "Picture"
   labels:
     create: "Create %{obj}"
     new: "New %{obj}"
