@@ -8,13 +8,43 @@ describe "Pictures" do
       login_and_create_user("test","secret")
     end
 
+    context "image" do
+      before(:each) do
+        visit edit_picture_path(@pic)
+      end
+
+      it "shows the current one" do
+        page.should have_image("Thumb_rails")
+      end
+
+      context "change" do
+        before(:each) do
+          attach_file("Image", File.expand_path("spec/rails2.png"))
+        end
+
+        it "update" do
+          lambda do
+            click_button "Update Picture"
+          end.should change(Picture, :count).by(0)
+          Picture.last.filename.should == "rails2.png"
+        end
+
+        it "cancel" do
+          lambda do
+            click_button "Cancel"
+          end.should change(Picture, :count).by(0)
+          Picture.last.filename.should == "rails.png"
+        end
+      end
+    end
+
     context "caption" do
       before(:each) do
         @pic.update_attributes(:caption => "A nice picture")
         visit edit_picture_path(@pic)
       end
 
-      it "shows the current caption" do
+      it "shows the current one" do
         find_field("Caption").value.should == "A nice picture"
       end      
 

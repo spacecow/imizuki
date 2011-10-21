@@ -2,6 +2,7 @@
   <%= f.input :main_picture_no, :as => :radio, :collection => [['Main Picture',@picture.event.pictures.index(@picture)]] %>
     <%= f.inputs :for => [:pictures,@picture] do |f2| %>
       <%= f2.input :image %>
+      <%= image_tag @picture.image.url(:thumb) %>
       <%= f2.input :caption %>
     <% end %>
   <%= f.submit t(:cancel), :name => :cancel %>
