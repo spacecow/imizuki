@@ -8,6 +8,37 @@ describe "Pictures" do
       login_and_create_user("test","secret")
     end
 
+    context "caption" do
+      before(:each) do
+        @pic.update_attributes(:caption => "A nice picture")
+        visit edit_picture_path(@pic)
+      end
+
+      it "shows the current caption" do
+        find_field("Caption").value.should == "A nice picture"
+      end      
+
+      context "change" do
+        before(:each) do
+          fill_in("Caption", :with => "A bad picture")
+        end
+
+        it "update" do
+          lambda do
+            click_button "Update Picture"
+            Picture.last.caption.should == "A bad picture"
+          end.should change(Picture, :count).by(0)
+        end
+
+        it "cancel" do
+          lambda do
+            click_button "Cancel"
+            Picture.last.caption.should == "A nice picture"
+          end.should change(Picture, :count).by(0)
+        end
+      end
+    end
+
     context "a main picture" do
       before(:each) do
         visit edit_picture_path(@pic)
@@ -24,14 +55,24 @@ describe "Pictures" do
         visit edit_picture_path(@pic2)
       end
 
-      it "should not be choosen as main picture" do
+      it "not choosen as main picture" do
         find_field("Main Picture").should_not be_checked
       end
 
-      it "select new main picture" do
-        choose "Main Picture"
-        click_button "Update Picture"
-        Event.last.main_picture_no.should be(1)
+      context "main picture" do 
+        before(:each) do
+          choose "Main Picture"
+        end
+
+        it "select" do
+          click_button "Update Picture"
+          Event.last.main_picture_no.should be(1)
+        end
+
+        it "select but cancel" do
+          click_button "Cancel"
+          Event.last.main_picture_no.should be(0)
+        end
       end
     end
   end

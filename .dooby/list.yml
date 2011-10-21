@@ -23,3 +23,5 @@ f01183: !ruby/object:Dooby::Task
   todo: add image when editing :done
 "759600": !ruby/object:Dooby::Task 
   todo: set active picture the main picture :done
+59f4c5: !ruby/object:Dooby::Task 
+  todo: edit a pictures caption :done

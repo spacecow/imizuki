@@ -28,6 +28,7 @@ class EventsController < ApplicationController
   end
 
   def update
+    redirect_to events_path and return if params[:cancel]
     if @event.update_attributes params[:event]
       nullify_main_picture_no if @event.pictures.empty?
       redirect_to events_path

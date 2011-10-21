@@ -1,4 +1,9 @@
 <%= semantic_form_for @picture.event do |f| %>
   <%= f.input :main_picture_no, :as => :radio, :collection => [['Main Picture',@picture.event.pictures.index(@picture)]] %>
+    <%= f.inputs :for => [:pictures,@picture] do |f2| %>
+      <%= f2.input :image %>
+      <%= f2.input :caption %>
+    <% end %>
+  <%= f.submit t(:cancel), :name => :cancel %>
   <%= f.submit update(:picture) %>
 <% end %>

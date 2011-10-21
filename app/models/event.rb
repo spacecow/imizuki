@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
   has_many :pictures, :dependent => :destroy
-  accepts_nested_attributes_for :pictures, :reject_if => lambda {|a| a[:image].blank?}
+  accepts_nested_attributes_for :pictures
   validate :default_main_picture
 
   #after_save :nullify_main_picture_no_if_pictures_arent_present
