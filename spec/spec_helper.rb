@@ -18,3 +18,23 @@ end
 Spork.each_run do
   FactoryGirl.reload
 end
+
+def controller_actions(controller)
+  Rails.application.routes.routes.inject({}) do |hash, route|
+    if route.requirements[:controller] == controller && !route.verb.nil?
+      hash[route.requirements[:action]] = route.verb.downcase.empty? ? "get" : route.verb.downcase
+    end
+    hash
+  end
+end
+
+def login(username,password)
+  visit login_path
+  fill_in "Login", :with => username
+  fill_in "Password", :with => password
+  click_button "Login"
+end
+def login_and_create_user(username,password)
+  user = User.create!(:username => username, :password => password)
+  login(username,password)
+end

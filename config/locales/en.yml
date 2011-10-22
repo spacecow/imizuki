@@ -2,8 +2,12 @@ en:
   del: "Del"
   edit: "Edit"
   event: "Event"
-  label:
+  login: "Login"
+  password: "Password"
+  picture: "Picture"
+  labels:
     create: "Create %{obj}"
+    new: "New %{obj}"
     update: "Update %{obj}"
   messages:
     sure?: "Are you sure?"

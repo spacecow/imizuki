@@ -1,7 +1,25 @@
 --- 
 a558ad: !ruby/object:Dooby::Task 
   todo: update iphone list after adding :done
-175d9d: !ruby/object:Dooby::Task 
-  todo: update iphone list after editing :doing
 6233c6: !ruby/object:Dooby::Task 
   todo: deselect row after edit
+eba560: !ruby/object:Dooby::Task 
+  todo: update iphone list after editing :done
+d96cb9: !ruby/object:Dooby::Task 
+  todo: authenticate delete :done
+5d6ca8: !ruby/object:Dooby::Task 
+  todo: someone adding an event during iphone is adding - error
+2b18d8: !ruby/object:Dooby::Task 
+  todo: attr_accessible on event/picture
+"717632": !ruby/object:Dooby::Task 
+  todo: make sure pictures are deleted when an event is deleted
+f5fbc2: !ruby/object:Dooby::Task 
+  todo: first image should be selected by default :done
+2f01b9: !ruby/object:Dooby::Task 
+  todo: |
+    iphone dies when trying to edit (something that has been edited by pc?)
+
+f01183: !ruby/object:Dooby::Task 
+  todo: add image when editing :done
+"759600": !ruby/object:Dooby::Task 
+  todo: set active picture the main picture :done

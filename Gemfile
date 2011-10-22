@@ -1,12 +1,26 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.10'
+gem 'rails', '3.1.0'
 gem 'formtastic'
-gem 'mysql2', '~> 0.2.11'
+gem 'mysql2'#, '~> 0.2.11'
 gem 'cancan'
 gem 'escape_utils'
 gem 'capistrano'
 gem 'annotate'
+gem 'bcrypt-ruby', :require => 'bcrypt'
+gem 'carrierwave'
+gem "rmagick"
+
+# Gems used only for assets and not required
+# in production environments by default.
+group :assets do
+  gem 'sass-rails', "  ~> 3.1.0"
+  gem 'coffee-rails', "~> 3.1.0"
+  gem 'uglifier'
+end
+gem 'jquery-rails'
+gem 'execjs'
+gem 'therubyracer'
 
 group :development do
   gem "rspec-rails"
@@ -19,4 +33,5 @@ group :test do
   gem 'guard-spork'
   gem 'factory_girl'
   gem 'capybara'
+  gem 'launchy'
 end

@@ -1,8 +1,9 @@
 module ApplicationHelper
-  def create(s); lbl(:create,s) end
+  def create(s); labels(:create,s) end
   def either_of(b,s1,s2); b ? s1 : s2 end
-  def lbl(s,o); t("label.#{s}",:obj=>t(o)) end
+  def labels(s,o); t("labels.#{s}",:obj=>t(o)) end
   def messages(s); t("messages.#{s}") end
+  def new(s) labels(:new,s) end
   def sure?; messages(:sure?) end
-  def update(s); lbl(:update,s) end
+  def update(s); labels(:update,s) end
 end

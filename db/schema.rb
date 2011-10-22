@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111004085756) do
+ActiveRecord::Schema.define(:version => 20111014054108) do
 
   create_table "events", :force => true do |t|
     t.date     "start_date"
@@ -20,6 +20,25 @@ ActiveRecord::Schema.define(:version => 20111004085756) do
     t.time     "end_time"
     t.string   "title"
     t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "main_picture_no", :default => 0
+  end
+
+  create_table "pictures", :force => true do |t|
+    t.string   "image"
+    t.string   "caption"
+    t.integer  "event_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "username"
+    t.string   "email"
+    t.integer  "roles_mask"
+    t.string   "password_hash"
+    t.string   "password_salt"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
