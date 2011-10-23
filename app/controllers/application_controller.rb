@@ -3,9 +3,9 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied do |exception|
     if current_user
-      redirect_to welcome_url, :alert => alert(:unauthorized_access) 
+      redirect_to welcome_url, :alert => alert(:unauthorised_access) 
     else
-      redirect_to login_url, :alert => alert(:unauthorized_access)
+      redirect_to login_url, :alert => alert(:unauthorised_access)
     end
   end
 

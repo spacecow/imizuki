@@ -5,6 +5,9 @@ en:
   login: "Login"
   password: "Password"
   picture: "Picture"
+  alert:
+    invalid_login_or_password: "Invalid login or password."
+    unauthorised_access: "Unauthorised access."
   labels:
     create: "Create %{obj}"
     new: "New %{obj}"
