@@ -43,6 +43,6 @@ class EventsController < ApplicationController
   private
 
     def nullify_main_picture_no
-      @event.update_attribute(:main_picture_no, nil) 
+      @event.update_attribute(:main_picture_no, -1) 
     end
 end

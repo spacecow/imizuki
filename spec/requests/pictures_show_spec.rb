@@ -12,6 +12,17 @@ describe "Pictures" do
         visit picture_path(@pic)
         page.should_not have_link("Edit") 
       end
+
+      it "shows the image" do
+        visit picture_path(@pic)
+        page.should have_image("Rails")
+      end
+
+      it "shows the caption" do
+        @pic.update_attribute(:caption, "A nice picture")
+        visit picture_path(@pic)
+        page.should have_content("A nice picture")
+      end
     end
 
     context "logged in" do 
