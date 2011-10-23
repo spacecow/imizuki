@@ -1,18 +1,14 @@
 class Event < ActiveRecord::Base
   has_many :pictures, :dependent => :destroy
-  accepts_nested_attributes_for :pictures, :reject_if => lambda {|a| a[:image].blank?}
-  validate :default_main_picture
+  accepts_nested_attributes_for :pictures #, :reject_if => lambda {|a| a[:image].blank?}
 
-  #after_save :nullify_main_picture_no_if_pictures_arent_present
+  validates :title, :presence => true, :uniqueness => true
+  validate :default_main_picture
 
   private
 
     def default_main_picture
       errors.add(:main_picture_no, "- One picture has to be selected") if !main_picture_no && !pictures.empty?
-    end
-
-    def nullify_main_picture_no_if_pictures_arent_present
-      self.main_picture_no = nil if pictures.empty?
     end
 end
 

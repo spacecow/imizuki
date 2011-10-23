@@ -1,4 +1,4 @@
 <%= f.input :main_picture_no, :as => :radio, :collection => [["Main Picture",i]] %>
 <%= f2.input :image, :as => :file %>
-<%= @event.pictures[i].filename %>
+<%= image_tag @event.pictures[i].image_url(:thumb) %>
 <%= f2.input :caption %>

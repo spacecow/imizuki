@@ -7,6 +7,40 @@ describe "Events" do
       @event = Event.create!(:title => "Opening")
     end
 
+    context "failes to edit an event" do
+      before(:each) do
+        visit edit_event_path(@event)
+      end
+
+      it "since title is not filled in" do
+        fill_in "Title", :with => ""
+        click_button "Update Event"
+        error_field.should have_content("can't be blank")
+      end
+
+      it "since title already exists" do
+        fill_in "Title", :with => "Opening"
+        click_button "Update Event"
+        error_field.should have_content("has already been taken")
+      end
+
+      it "image caption should still be shown" do
+        fill_in "Title", :with => ""
+        fill_in "Caption", :with => "some caption"
+        click_button "Update Event"
+        find_field("Caption").value.should == "some caption"
+      end
+
+      it "image should still be chosen" do
+        lambda do
+          fill_in "Title", :with => ""
+          attach_file("Image", File.expand_path("app/assets/images/rails.png"))
+          click_button "Create Event"
+        end.should change(Event, :count).by(0)
+        page.should have_image("Thumb_rails") 
+      end
+    end
+
     it "edit an event" do
       visit edit_event_path(@event)
       fill_in "Title", :with => "Ending"
@@ -25,14 +59,14 @@ describe "Events" do
 
     context "attached pictures" do
       before(:each) do
-        @pic1 = Picture.create!(:image => File.open("spec/rails.png"), :event_id => @event.id)
-        @pic2 = Picture.create!(:image => File.open("spec/rails2.png"), :event_id => @event.id)
+        @pic1 = create_pic("rails.png", @event)
+        @pic2 = create_pic("rails2.png", @event)
       end
 
       it "display" do
         visit edit_event_path(@event)
-        fieldset("image",0).should have_content("rails.png")
-        fieldset("image",1).should have_content("rails2.png")
+        fieldset("image",0).should have_image("Thumb_rails")
+        fieldset("image",1).should have_image("Thumb_rails2")
       end
 
       context "indicate main picture as" do
