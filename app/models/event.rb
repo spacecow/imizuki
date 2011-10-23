@@ -1,6 +1,8 @@
 class Event < ActiveRecord::Base
   has_many :pictures, :dependent => :destroy
   accepts_nested_attributes_for :pictures
+
+  validates :title, :presence => true, :uniqueness => true
   validate :default_main_picture
 
   def main_image_url(ver=nil); main_picture.image_url(ver) end
@@ -11,6 +13,7 @@ class Event < ActiveRecord::Base
     def default_main_picture
       errors.add(:main_picture_no, "- One picture has to be selected") if !main_picture_no && !pictures.empty?
     end
+
     def default_picture
       Picture.new(:image => File.open("app/assets/images/default.png")) 
     end

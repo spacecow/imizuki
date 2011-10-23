@@ -9,6 +9,9 @@ class SessionsController < ApplicationController
     if user
       session[:user_id] = user.id
       redirect_to root_path
+    else
+      flash[:alert] = alert(:invalid_login_or_password)
+      render :new
     end
   end
 

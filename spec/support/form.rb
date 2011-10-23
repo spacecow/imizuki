@@ -1,8 +1,12 @@
-#def fieldsets(klass); all(:css, "fieldset.#{klass}") end
+def error_field
+  find(:css, "li#event_title_input p.inline-errors")
+end
+
 def fieldsets(klass,scope = {})
   return all(:xpath, "#{scope[:within].path}/ol/li/fieldset[@class='#{klass}']") unless scope.empty?
   all(:xpath, "//fieldset[@class='#{klass}']")
 end
+
 def fieldset(klass,no,scope={}); fieldsets(klass,scope)[no] end
 
 def radio(scope = {})

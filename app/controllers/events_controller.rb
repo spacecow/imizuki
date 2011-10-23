@@ -18,8 +18,11 @@ class EventsController < ApplicationController
 
   def create
     if @event.save
+      @event.pictures.reject!{|e| e.image_url.nil?}
       nullify_main_picture_no if @event.pictures.empty?
       redirect_to events_path
+    else
+      render :new
     end
   end
 
@@ -30,8 +33,11 @@ class EventsController < ApplicationController
   def update
     redirect_to events_path and return if params[:cancel]
     if @event.update_attributes params[:event]
+      @event.pictures.reject!{|e| e.image_url.nil?}
       nullify_main_picture_no if @event.pictures.empty?
       redirect_to events_path
+    else
+      render :edit
     end
   end
 
