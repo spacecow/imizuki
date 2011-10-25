@@ -18,7 +18,7 @@ describe "Events" do
 
       it "should be linked to" do
         click_link("Thumb_rails")
-        page.current_path.should == picture_path(@pic)
+        page.current_path.should == pictures_path
       end 
     end
   end

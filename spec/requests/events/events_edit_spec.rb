@@ -8,36 +8,29 @@ describe "Events" do
     end
 
     context "failes to edit an event" do
-      before(:each) do
-        visit edit_event_path(@event)
-      end
 
       it "since title is not filled in" do
+        visit edit_event_path(@event)
         fill_in "Title", :with => ""
         click_button "Update Event"
         error_field.should have_content("can't be blank")
       end
 
       it "since title already exists" do
-        fill_in "Title", :with => "Opening"
+        Event.create!(:title => "Ending")
+        visit edit_event_path(@event)
+        fill_in "Title", :with => "Ending"
         click_button "Update Event"
         error_field.should have_content("has already been taken")
       end
 
-      it "image caption should still be shown" do
+      it "image should still be shown" do
+        create_pic("rails.png",@event,"some caption")
+        visit edit_event_path(@event)
         fill_in "Title", :with => ""
-        fill_in "Caption", :with => "some caption"
         click_button "Update Event"
-        find_field("Caption").value.should == "some caption"
-      end
-
-      it "image should still be chosen" do
-        lambda do
-          fill_in "Title", :with => ""
-          attach_file("Image", File.expand_path("app/assets/images/rails.png"))
-          click_button "Create Event"
-        end.should change(Event, :count).by(0)
         page.should have_image("Thumb_rails") 
+        find_field("Caption").value.should == "some caption"
       end
     end
 
@@ -46,7 +39,7 @@ describe "Events" do
       fill_in "Title", :with => "Ending"
       click_button "Update Event"
       Event.find_by_title("Ending").should_not be(nil)
-      Event.last.main_picture_no.should be(nil)
+      Event.last.main_picture_no.should be(-1)
     end
 
     it "attach a picture" do

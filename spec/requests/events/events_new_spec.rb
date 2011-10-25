@@ -59,7 +59,7 @@ describe "Events" do
           click_button "Create Event"
         end.should change(Event, :count).by(1)
         Event.last.title.should == "Rspec Title"
-        Event.last.main_picture_no.should be(nil)
+        Event.last.main_picture_no.should be(-1)
       end
 
       it "with an image" do
