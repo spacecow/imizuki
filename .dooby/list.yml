@@ -27,3 +27,5 @@ f01183: !ruby/object:Dooby::Task
   todo: edit a pictures caption :done
 03a4e3: !ruby/object:Dooby::Task 
   todo: edit a pictures image :done
+34066f: !ruby/object:Dooby::Task 
+  todo: adding a picture to an emtpy event makes it main :done

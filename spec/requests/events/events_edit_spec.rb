@@ -7,8 +7,24 @@ describe "Events" do
       @event = Event.create!(:title => "Opening")
     end
 
-    context "failes to edit an event" do
+    it "edit an event" do
+      visit edit_event_path(@event)
+      fill_in "Title", :with => "Ending"
+      click_button "Update Event"
+      Event.find_by_title("Ending").should_not be(nil)
+      Event.last.main_picture_no.should be(-1)
+    end
 
+    it "attached picture should be main" do
+      visit edit_event_path(@event)
+      lambda do
+        attach_file("Image", File.expand_path("app/assets/images/rails.png"))
+        click_button "Update Event"
+      end.should change(Picture, :count).by(1)
+      Event.last.main_picture_no.should be(0)
+    end 
+
+    context "failes to edit an event" do
       it "since title is not filled in" do
         visit edit_event_path(@event)
         fill_in "Title", :with => ""
@@ -33,22 +49,6 @@ describe "Events" do
         find_field("Caption").value.should == "some caption"
       end
     end
-
-    it "edit an event" do
-      visit edit_event_path(@event)
-      fill_in "Title", :with => "Ending"
-      click_button "Update Event"
-      Event.find_by_title("Ending").should_not be(nil)
-      Event.last.main_picture_no.should be(-1)
-    end
-
-    it "attach a picture" do
-      visit edit_event_path(@event)
-      lambda do
-        attach_file("Image", File.expand_path("app/assets/images/rails.png"))
-        click_button "Update Event"
-      end.should change(Picture, :count).by(1)
-    end 
 
     context "attached pictures" do
       before(:each) do
