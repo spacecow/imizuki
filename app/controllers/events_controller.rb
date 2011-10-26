@@ -28,6 +28,7 @@ class EventsController < ApplicationController
 
   def edit
     @event.pictures.build
+    @event.main_picture_no = 0 if @event.main_picture_no == -1
   end
 
   def update
