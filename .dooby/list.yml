@@ -29,3 +29,5 @@ f01183: !ruby/object:Dooby::Task
   todo: edit a pictures image :done
 34066f: !ruby/object:Dooby::Task 
   todo: adding a picture to an emtpy event makes it main :done
+6f5cac: !ruby/object:Dooby::Task 
+  todo: login should be done in the background for iphone

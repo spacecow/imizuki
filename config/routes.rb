@@ -1,7 +1,11 @@
 Imizuki::Application.routes.draw do
   get "pictures/show"
 
-  resources :pictures
+  resources :pictures do
+    collection do
+      get 'last'
+    end
+  end
   resources :events
   resources :sessions, :only => [:new,:create,:destroy] do
     collection do

@@ -11,6 +11,12 @@ class PicturesController < ApplicationController
   def edit
   end
 
+  def last
+    respond_to do |f|
+      f.json {render :json => Picture.last}
+    end
+  end
+
   private
 
     def load_pictures

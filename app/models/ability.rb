@@ -6,7 +6,7 @@ class Ability
     can [:show,:index], Picture
     if user
       can [:create,:update,:destroy], Event
-      can :edit, Picture
+      can [:edit,:last], Picture
     end
   end
 end
