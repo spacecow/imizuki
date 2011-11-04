@@ -30,12 +30,31 @@ class ImageUploader < CarrierWave::Uploader::Base
   #   # do something
   # end
 
+  # Rotates the image based on the EXIF Orientation
+  def fix_exif_rotation
+    manipulate! do |img|
+      img.auto_orient!
+      img = yield(img) if block_given?
+      img
+    end
+  end
+  # Strips out all embedded information from the image
+  def strip
+    manipulate! do |img|
+      img.strip!
+      img = yield(img) if block_given?
+      img
+    end
+  end
+
   #Create different versions of your uploaded files:
   version :thumb do
     process :resize_to_limit => [56, 56]
   end
   
   version :iphone do
+    process :fix_exif_rotation
+    process :strip
     process :resize_to_limit => [320, 480]
   end
 
