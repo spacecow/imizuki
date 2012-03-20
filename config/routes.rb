@@ -13,6 +13,7 @@ Imizuki::Application.routes.draw do
     end
   end
 
+  resources :users, :only => :show
   match 'login' => 'sessions#new'
   match 'logout' => 'sessions#delete'
   match 'iphone' => 'sessions#iphone'

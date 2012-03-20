@@ -7,8 +7,14 @@ class SessionsController < ApplicationController
   def create
     user = User.authenticate(params[:login],params[:password])
     if user
-      session[:user_id] = user.id
-      redirect_to root_path
+      session_userid(user.id)
+      p session_original_url
+      if session_original_url
+        url = session_original_url
+        session_original_url(nil)
+        redirect_to url and return
+      end
+      redirect_to root_url
     else
       flash[:alert] = alert(:invalid_login_or_password)
       render :new
@@ -16,7 +22,7 @@ class SessionsController < ApplicationController
   end
 
   def delete
-    session[:user_id] = nil
+    session_userid(nil)
     redirect_to root_url
   end
 

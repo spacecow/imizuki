@@ -1,7 +1,13 @@
+<%= title jt(:login) %>
+
 <%= form_tag sessions_path do %>
-  <%= label_tag :login, t(:login) %>
-  <%= text_field_tag :login %>
-  <%= label_tag :password, t(:password) %>
-  <%= text_field_tag :password %>
+  <li>
+    <%= label_tag :login, t(:login) %>
+    <%= text_field_tag :login %>
+  </li>
+  <li>
+    <%= label_tag :password, t(:password) %>
+    <%= text_field_tag :password %>
+  </li>
   <%= submit_tag t(:login) %>
 <% end %>
