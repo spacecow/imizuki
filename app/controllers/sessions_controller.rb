@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     user = User.authenticate(params[:login],params[:password])
     if user
       session_userid(user.id)
-      p session_original_url
+      flash[:notice] = notify(:logged_in)
       if session_original_url
         url = session_original_url
         session_original_url(nil)
@@ -16,14 +16,14 @@ class SessionsController < ApplicationController
       end
       redirect_to root_url
     else
-      flash[:alert] = alert(:invalid_login_or_password)
+      flash[:alert] = alertify(:invalid_login_or_password)
       render :new
     end
   end
 
   def delete
     session_userid(nil)
-    redirect_to root_url
+    redirect_to root_url, :notice => notify(:logged_out)
   end
 
   def iphone

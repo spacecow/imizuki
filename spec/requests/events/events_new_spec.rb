@@ -4,7 +4,7 @@ describe "Events" do
   describe "POST /events" do
     context "failes to create a new event" do
       before(:each) do
-        login_and_create_user("test","secret")
+        login_admin
       end 
 
       it "since title is not filled in" do
@@ -49,7 +49,7 @@ describe "Events" do
 
     context "creates a new event" do
       before(:each) do
-        login_and_create_user("test","secret")
+        login_admin
         visit new_event_path
       end
 

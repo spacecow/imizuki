@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   include BasicApplicationController
 
   protect_from_forgery
-  helper_method :jt
+  helper_method :jt, :current_user, :pl
 
   rescue_from CanCan::AccessDenied do |exception|
     exception.default_message = alertify(:unauthorized_access)
@@ -15,14 +15,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def alert(act); t("alert.#{act}") end
-  def ft(s); t("formtastic.labels.#{s.to_s}") end
+  #def alert(act); t("alert.#{act}") end
+  #def ft(s); t("formtastic.labels.#{s.to_s}") end
 
-  def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
-  end
+  #def current_user
+  #  @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  #end
 
-  private
+  #private
 
     def authenticate
       unless current_user || Rails.env.test?

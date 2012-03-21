@@ -1,3 +1,8 @@
 <div id="user_nav">
-  <%= link_to jt(:login), login_path %>
+  <% if current_user %>
+    <%# mess(:logged_in_as,name:current_user.username) %>
+    <%= link_to jt(:logout), logout_path %>
+  <% else %>
+    <%= link_to jt(:login), login_path %>
+  <% end %>
 </div>

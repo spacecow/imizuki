@@ -1,6 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.1.3'
+#gem 'rails', github: 'rails/rails', branch: '3-2-stable', ref: '123...' #sha-commit 
 gem 'formtastic'
 gem 'mysql2'#, '~> 0.2.11'
 gem 'cancan'
@@ -10,6 +11,8 @@ gem 'annotate'
 gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'carrierwave'
 gem "rmagick", "2.12.2"
+gem 'redis'
+gem 'yajl-ruby'
 #gem "rb-inotify"
 #gem "libnotify"
 
@@ -19,6 +22,7 @@ group :assets do
   gem 'sass-rails', "  ~> 3.1.0"
   gem 'coffee-rails', "~> 3.1.0"
   gem 'uglifier'
+  gem 'compass-rails'
 end
 gem 'jquery-rails'
 gem 'execjs'

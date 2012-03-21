@@ -27,7 +27,7 @@ describe "Pictures" do
 
     context "logged in" do 
       before(:each) do
-        login_and_create_user("test","secret")
+        login_admin
         visit picture_path(@pic)
       end
 

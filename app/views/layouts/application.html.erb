@@ -1,20 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Imizuki</title>
+  <title>Imizuki <%= yield :title %></title>
   <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "application" %>
+  <%= stylesheet_link_tag "iphone/landscape", :media => "only screen and (max-width: 900px)" %>
+  <%= stylesheet_link_tag "iphone/portrait", :media => "only screen and (max-width: 480px)" %>
+  <%# stylesheet_link_tag "iphone/portrait" %>
   <%= csrf_meta_tag %>
 </head>
 <body>
 
-<% flash.each do |name, msg| %>
-  <%= content_tag :div, msg, :id => "flash_#{name}" %>
-<% end %>
+<div id="contents_container">
+  <div id="contents">
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, :id => "flash_#{name}", :class => "flash" %>
+    <% end %>
 
-<%= render 'layouts/user_nav' %>
 
-<%= yield %>
+    <div id="site_nav_container">
+      <%= render 'layouts/user_nav' %>
+      <%= render 'layouts/site_nav' %>
+    </div>
+    <div id="main_container">
+      <div id="main">
+        <%= yield %>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>
 
 </body>
 </html>

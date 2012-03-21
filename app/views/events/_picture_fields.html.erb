@@ -1,4 +1,5 @@
-<%= f.input :main_picture_no, :as => :radio, :collection => [["Main Picture",i]] %>
-<%= f2.input :image, :as => :file %>
-<%= image_tag @event.pictures[i].image_url(:thumb) %>
-<%= f2.input :caption %>
+<%= f.input :main_picture_no, :as => :radio, :collection => [[ft(:main_image),i]], label:false %>
+<%= image_tag @event.pictures[i].image_url(:thumb) unless @event.pictures[i].image_url.nil? %>
+<div class="clear"></div>
+<%= f2.input :image, :as => :file, label:ft(:image) %>
+<%= f2.input :caption, label:ft(:caption) %>

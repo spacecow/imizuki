@@ -5,5 +5,5 @@
       <%= render "events/picture_fields", :f => f, :f2 => f2, :i => i %>
     <% end %>
   <% end %>
-  <%= f.submit either_of(@event.new_record?,create(:event),update(:event)) %>
+  <%= submit f,@event %>
 <% end %>

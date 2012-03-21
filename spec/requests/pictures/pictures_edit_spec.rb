@@ -5,7 +5,7 @@ describe "Pictures" do
     before(:each) do
       @event = Event.create(:title => "Opening", :main_picture_no => 0)
       @pic = create_pic("rails.png", @event)
-      login_and_create_user("test","secret")
+      login_admin
     end
 
     context "image" do

@@ -1,4 +1,6 @@
 class Event < ActiveRecord::Base
+  include When
+
   has_many :pictures, :dependent => :destroy
   accepts_nested_attributes_for :pictures
 
@@ -6,7 +8,10 @@ class Event < ActiveRecord::Base
   validate :default_main_picture
 
   def main_image_url(ver=nil); main_picture.image_url(ver) end
-  def main_picture; pictures[main_picture_no] || default_picture end
+  def main_picture
+    pictures[main_picture_no]
+    # || default_picture end
+  end
 
   private
 

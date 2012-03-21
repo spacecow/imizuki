@@ -5,6 +5,6 @@
       <%= image_tag @picture.image.url(:thumb) %>
       <%= f2.input :caption %>
     <% end %>
-  <%= f.submit t(:cancel), :name => :cancel %>
+  <%= f.submit jt(:cancel), :name => :cancel %>
   <%= f.submit update(:picture) %>
 <% end %>

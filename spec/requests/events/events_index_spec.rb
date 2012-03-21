@@ -6,27 +6,15 @@ describe "Events" do
       @event = Event.create(:title => "Opening")
     end
 
-    it "list events" do
-      visit events_path
-      page.should have_content("Opening")
-    end
-
     it "show an event" do
       visit events_path
       click_link "Opening"
       page.current_path.should == event_path(@event)
     end
 
-    context "not logged in" do
-      it "cannot see new event link" do
-        visit events_path
-        page.should_not have_link("New Event")
-      end
-    end
-
-    context "user actions" do
+    context "admin actions" do
       before(:each) do
-        login_and_create_user("test","secret")
+        login_admin
         visit events_path
       end
 

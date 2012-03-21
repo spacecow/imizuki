@@ -6,7 +6,7 @@ en:
   login: "Login"
   password: "Password"
   picture: "Picture"
-  alert:
+  alerts:
     invalid_login_or_password: "Invalid login or password."
     unauthorised_access: "Unauthorised access."
   labels:
@@ -14,5 +14,8 @@ en:
     new: "New %{obj}"
     update: "Update %{obj}"
   messages:
+    logged_in_as: "Logged in as %{name}."
     sure?: "Are you sure?"
+  notices:
+    logged_in: "Logged in."
     

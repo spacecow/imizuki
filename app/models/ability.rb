@@ -5,9 +5,13 @@ class Ability
     can [:show,:index], Event
     can [:show,:index], Picture
     if user
-      can :show, User
-      can [:create,:update,:destroy], Event
-      can [:edit,:last], Picture
+      if user.role? :member
+        can :show, User
+      end
+      if user.role? :admin
+        can [:create,:update,:destroy], Event
+        can [:edit,:last], Picture
+      end
     end
   end
 end
