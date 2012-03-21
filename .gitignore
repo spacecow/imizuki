@@ -7,3 +7,5 @@ config/database.yml
 .sass-cache/
 public/uploads
 iphone/
+config/deploy_sao.rb
+config/deploy.rb
