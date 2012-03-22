@@ -4,7 +4,9 @@
   <title>Imizuki <%= yield :title %></title>
   <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "application" %>
+  <%= stylesheet_link_tag "stylesheets/iphone/landscape", :media => "only screen and (max-device-width: 480px) and (orientation:landscape)" %>
   <%= stylesheet_link_tag "iphone/landscape", :media => "only screen and (max-width: 900px)" %>
+  <%= stylesheet_link_tag "stylesheets/iphone/portrait", :media => "only screen and (max-width: 480px) and (orientation:portrait)" %>
   <%= stylesheet_link_tag "iphone/portrait", :media => "only screen and (max-width: 480px)" %>
   <%# stylesheet_link_tag "iphone/portrait" %>
   <%= csrf_meta_tag %>

@@ -31,3 +31,27 @@ f01183: !ruby/object:Dooby::Task
   todo: adding a picture to an emtpy event makes it main :done
 6f5cac: !ruby/object:Dooby::Task 
   todo: login should be done in the background for iphone
+872a44: !ruby/object:Dooby::Task 
+  todo: add date and time fields
+1c7090: !ruby/object:Dooby::Task 
+  todo: contact or similar
+2ae0fa: !ruby/object:Dooby::Task 
+  todo: selected menu items
+dbae65: !ruby/object:Dooby::Task 
+  todo: event in the center
+82e0cc: !ruby/object:Dooby::Task 
+  todo: pictures below event
+429cec: !ruby/object:Dooby::Task 
+  todo: show event displays full content and more pictures
+ac523d: !ruby/object:Dooby::Task 
+  todo: show pictures with slideshow
+bc12a1: !ruby/object:Dooby::Task 
+  todo: contact address on home page footer
+6eaacc: !ruby/object:Dooby::Task 
+  todo: twinkle stars
+569af5: !ruby/object:Dooby::Task 
+  todo: added picture has no optimal display in iphone mode
+57da7e: !ruby/object:Dooby::Task 
+  todo: added picture is upside down on pc version
+b07ab2: !ruby/object:Dooby::Task 
+  todo: smaller picture in portrait mode :done
