@@ -1,5 +1,10 @@
 <%= semantic_form_for @event, :html => {:multipart => true} do |f| %>
-  <%= f.input :title %>
+  <%= f.input :title, label:ft(:title) %>
+  <%= f.input :content, label:ft(:content) %>
+  <%= f.input :start_date, :as => :string, label:ft(:start_date) %>
+  <%= f.input :start_time, :as => :string, label:ft(:start_time) %>
+  <%= f.input :end_date, :as => :string, label:ft(:end_date) %>
+  <%= f.input :end_time, :as => :string, label:ft(:end_time) %>
   <% @event.pictures.each_with_index do |pic,i| %>
     <%= f.inputs :for => [:pictures,pic], :class => :image do |f2| %>
       <%= render "events/picture_fields", :f => f, :f2 => f2, :i => i %>
