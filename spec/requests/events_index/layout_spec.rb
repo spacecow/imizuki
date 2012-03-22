@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 require 'spec_helper'
 
-describe 'Events, index', focus:true do
+describe 'Events, index' do
   context "no user layout without events" do
     before(:each){ visit events_path }
 
@@ -82,6 +82,9 @@ describe 'Events, index', focus:true do
       visit events_path
     end
 
+    it "the title is a link"
+    it "the event title redirects to that event's show page"
+
     it "has an events div" do
       page.should have_div(:events)
     end
@@ -114,6 +117,10 @@ describe 'Events, index', focus:true do
       div(:event,0).div(:content).should have_content("The opening of the homepage!")
     end
 
+    it "has no thumbs div" do
+      div(:event,0).should_not have_div(:thumbs)
+    end
+
     it "action div has no edit function" do
       div(:event,0).should_not have_link('Edit')
     end
@@ -130,12 +137,16 @@ describe 'Events, index', focus:true do
       visit events_path
     end
 
-    it "the title is centered" do
-      div(:event,0).divs_no(:center).should be(0)
+    it "the contents in the event is centered" do
+      div(:event,0).divs_no(:center).should be(3)
+    end
+
+    it "has a thumbs div" do
+      div(:event,0).should have_div(:thumbs)
     end
 
     it "displays the image" do
-      div(:event,0).div(:image).should have_image("Thumb_rails")
+      div(:event,0).div(:thumbs).should have_image("Thumb_rails")
     end
   end #no user layout with events, with pictures
 end

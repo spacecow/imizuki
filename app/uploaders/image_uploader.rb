@@ -49,7 +49,9 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   #Create different versions of your uploaded files:
   version :thumb do
-    process :resize_to_limit => [56, 56]
+    #process :resize_to_limit => [56, 56]
+    #process :resize_to_fit => [56, 56]
+    process :resize_to_fill => [56, 56]
   end
   
   version :iphone do

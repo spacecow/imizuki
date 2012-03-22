@@ -1,15 +1,19 @@
 <div class="event">
-  <% unless event.pictures.empty? %>
-    <div id="image"><%= image_tag event.main_image_url(:thumb) %></div>
-  <% end %>
-  <div id="title" class="<%= event.pictures.empty? ? 'center' : '' %>"><%= event.title %></div>
-  <div id="date" class="time <%= event.pictures.empty? ? 'center' : '' %>">
+  <div id="title" class="center"><%= event.title %></div>
+  <div id="date" class="time center">
     <%= event.when %>
   </div>
   <div id="content">
     <%= event.content %>
   </div>
-  <div id="actions" class="<%= event.pictures.empty? ? 'center' : '' %>">
+  <% unless event.pictures.empty? %>
+    <div id="thumbs" class="center">
+      <% event.pictures.each do |picture| %>
+        <%= image_tag picture.image_url(:thumb) %>
+      <% end %>
+    </div>
+  <% end %>
+  <div id="actions" class="center">
     <%= link_to jt(:edit), edit_event_path(event) if can? :edit, event %>
     <%= link_to jt(:del), event, confirm:sure?, :method => :delete if can? :destroy, event %>
   </div>

@@ -37,10 +37,6 @@ f01183: !ruby/object:Dooby::Task
   todo: contact or similar
 2ae0fa: !ruby/object:Dooby::Task 
   todo: selected menu items
-dbae65: !ruby/object:Dooby::Task 
-  todo: event in the center
-82e0cc: !ruby/object:Dooby::Task 
-  todo: pictures below event
 429cec: !ruby/object:Dooby::Task 
   todo: show event displays full content and more pictures
 ac523d: !ruby/object:Dooby::Task 
@@ -55,3 +51,7 @@ bc12a1: !ruby/object:Dooby::Task
   todo: added picture is upside down on pc version
 b07ab2: !ruby/object:Dooby::Task 
   todo: smaller picture in portrait mode :done
+a1af23: !ruby/object:Dooby::Task 
+  todo: event in the center :done
+544ed4: !ruby/object:Dooby::Task 
+  todo: pictures below event :done
