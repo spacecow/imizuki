@@ -98,7 +98,7 @@ describe 'Events, index' do
     end
 
     it "the contents in the event are centered" do
-      div(:event,0).divs_no(:center).should be(3)
+      div(:event,0).divs_no(:center).should be(0)
     end
 
     it "has a date div" do
@@ -138,7 +138,7 @@ describe 'Events, index' do
     end
 
     it "the contents in the event is centered" do
-      div(:event,0).divs_no(:center).should be(4)
+      div(:event,0).divs_no(:center).should be(0)
     end
 
     it "has a thumbs div" do

@@ -1,6 +1,8 @@
 Imizuki::Application.routes.draw do
   get "pictures/show"
 
+  match 'contact' => 'operator#contact'
+
   resources :pictures do
     collection do
       get 'last'

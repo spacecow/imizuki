@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  before_filter :set_selected
   before_filter :authenticate, :only => [:create,:update,:destroy]
   load_and_authorize_resource
 
@@ -52,4 +53,6 @@ class EventsController < ApplicationController
     def nullify_main_picture_no
       @event.update_attribute(:main_picture_no, -1) 
     end
+
+    def set_selected; @selected = :events end
 end

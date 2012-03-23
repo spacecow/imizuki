@@ -58,7 +58,7 @@ div#contents_container
   +border-radius(10px)
   padding: 5px 10px
   div#contents
-    height: 500px
+    min-height: 500px
     background: black url('red_moon_mizuki2.png') no-repeat scroll top left
     div.flash
       float: left
@@ -79,22 +79,31 @@ div#contents_container
       margin-top: 5px
     div#main_container
       width: 278px
-      height: 458px
+      min-height: 458px
       float: right
       background: rgba(20,20,20,0.8)
       border: 1px solid white
       +border-radius(10px)
       padding: 20px
+      z-index: 0
 
 div#site_nav
   ul
+    float: right
     li
-      padding: 1px 6px 1px 1px
       text-align: right
+      padding: 2px 5px 2px 2px 
+      position: relative
+      width: 190px
       a
         color: white
         text-shadow: 2px 2px 2px $link_colour
         font-size: 25px
+    li.selected
+      background: black
+      padding: 1px 4px 1px 1px 
+      border: 1px solid white
+      +border-radius(10px)
 
 div#user_nav
   text-align: right

@@ -1,21 +1,25 @@
+<% present event do |presenter| %>
 <div class="event">
-  <div id="title" class="center"><%= event.title %></div>
-  <div id="date" class="time center">
+  <div id="title">
+    <%= event.title %>
+  </div>
+  <div id="date" class="time">
     <%= event.when %>
   </div>
   <div id="content">
     <%= event.content %>
   </div>
   <% unless event.pictures.empty? %>
-    <div id="thumbs" class="center">
+    <div id="thumbs">
       <% event.pictures.each do |picture| %>
         <%= image_tag picture.image_url(:thumb) %>
       <% end %>
     </div>
   <% end %>
-  <div id="actions" class="center">
-    <%= link_to jt(:edit), edit_event_path(event) if can? :edit, event %>
-    <%= link_to jt(:del), event, confirm:sure?, :method => :delete if can? :destroy, event %>
+  <div id="actions">
+    <%= presenter.edit_action %>
+    <%= presenter.destroy_action %>
   </div>
   <div class="clear"></div>
 </div>
+<% end %>

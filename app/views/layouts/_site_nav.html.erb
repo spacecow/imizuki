@@ -1,7 +1,10 @@
 <div id="site_nav">
   <ul>
-    <li>
-      <%= link_to jt(:home), events_path %>
+    <li class="<%= @selected == :events ? 'selected' : '' %>">
+      <%= link_to pl(:event), events_path %>
+    </li>
+    <li class="<%= @selected == :contact ? 'selected' : '' %>">
+      <%= link_to jt(:contact), contact_path %>
     </li>
   </ul>
 </div>
