@@ -41,6 +41,30 @@ div.hide
   +border-radius(10px)
   +linear-gradient(color-stops(gray, white))
 
+$star_base_y: 0px
+$star_base_x: 0px
+$star1_x: $star_base_x + 177px
+$star1_y: $star_base_y + 82px
+$star2_x: $star_base_x + 740px
+$star2_y: $star_base_y + 57px
+$star3_x: $star_base_x + 151px
+$star3_y: $star_base_y + 377px
+$star4_x: $star_base_x + 460
+$star4_y: $star_base_y + 85 
+$star5_x: $star_base_x + 880
+$star5_y: $star_base_y + 450
+$star6_x: $star_base_x + 800
+$star6_y: $star_base_y + 450
+@mixin star-base($x, $y, $w: 47px, $h: 47px)
+  left: $x
+  top: $y
+  position: absolute
+  background-color: transparent
+  width: $w
+  height: $h
+  z-index: 1
+  display: block
+
 $input_field_width: 278px
 form
   li
@@ -55,6 +79,18 @@ form
     border-top: 2px solid white
 
 div#contents_container
+  div#star1
+    +star-base($star1_x,$star1_y)
+  div#star2
+    +star-base($star2_x,$star2_y)
+  div#star3
+    +star-base($star3_x,$star3_y)
+  div#star4
+    +star-base($star4_x,$star4_y,71px,64px)
+  div#star5
+    +star-base($star5_x,$star5_y)
+  div#star6
+    +star-base($star6_x,$star6_y,71px,64px)
   width: 878px
   margin: 30px auto 0 auto
   border: 1px solid white

@@ -21,7 +21,7 @@ class EventsController < ApplicationController
     if @event.save
       @event.pictures.reject!{|e| e.image_url.nil?}
       nullify_main_picture_no if @event.pictures.empty?
-      redirect_to events_path
+      redirect_to events_url
     else
       render :new
     end
@@ -37,7 +37,7 @@ class EventsController < ApplicationController
     if @event.update_attributes params[:event]
       @event.pictures.reject!{|e| e.image_url.nil?}
       nullify_main_picture_no if @event.pictures.empty?
-      redirect_to events_path
+      redirect_to events_url
     else
       render :edit
     end
@@ -45,7 +45,7 @@ class EventsController < ApplicationController
 
   def destroy
     @event.destroy
-    redirect_to events_path, :notice => deleted(:event)
+    redirect_to events_url, :notice => deleted(:event)
   end
   
   private

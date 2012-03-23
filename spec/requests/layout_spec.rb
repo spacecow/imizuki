@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Layout', focus:true do
+describe 'Layout' do
   context "no user" do
     describe "root" do
       before(:each){ visit root_path }
@@ -10,15 +10,15 @@ describe 'Layout', focus:true do
       end
 
       it "has an enter image" do
-        div(:contents_container).should have_image("Red_moon_mizuki_portrait")
+        div(:contents_container).should have_image("Red_moon_mizuki2")
       end
 
       it "the image is a link" do
-        div(:contents_container).should have_link('Red_moon_mizuki_portrait')
+        div(:contents_container).should have_link('Red_moon_mizuki2')
       end
 
       it "the image links to the events page" do
-        div(:contents_container).click_link 'Red_moon_mizuki_portrait'
+        div(:contents_container).click_link 'Red_moon_mizuki2'
         current_path.should eq events_path
       end
     end
@@ -31,7 +31,7 @@ describe 'Layout', focus:true do
       end
 
       it "has no enter image" do
-        div(:contents_container).should_not have_image("Red_moon_mizuki_portrait")
+        div(:contents_container).should_not have_image("Red_moon_mizuki2")
       end
 
       it "site nav has a home link" do

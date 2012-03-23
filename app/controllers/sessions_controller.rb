@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
         session_original_url(nil)
         redirect_to url and return
       end
-      redirect_to root_url
+      redirect_to events_url
     else
       flash[:alert] = alertify(:invalid_login_or_password)
       render :new
@@ -28,7 +28,7 @@ class SessionsController < ApplicationController
 
   def iphone
     if @user
-      redirect_to root_path
+      redirect_to events_path
     end
   end
 end
