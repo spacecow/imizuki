@@ -31,6 +31,9 @@ div.time
   font-size: 12px
   color: $title_colour
 
+div.hide
+  visibility: hidden
+
 @mixin white-gradient
   color: black
   font-weight: bold
@@ -57,7 +60,17 @@ div#contents_container
   border: 1px solid white
   +border-radius(10px)
   padding: 5px 10px
+  img#enter
+    position: absolute
+    top: 50%
+    left: 50%
+    width: 432px
+    height: 410px
+    margin-top: -216px
+    margin-left: -210px
   div#contents
+    &.enter
+      background: none
     min-height: 500px
     background: black url('red_moon_mizuki2.png') no-repeat scroll top left
     div.flash

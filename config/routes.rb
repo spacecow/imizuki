@@ -20,5 +20,6 @@ Imizuki::Application.routes.draw do
   match 'logout' => 'sessions#delete'
   match 'iphone' => 'sessions#iphone'
   match 'welcome' => "events#index"
-  root :to => "events#index"
+
+  root :to => "operator#enter"
 end

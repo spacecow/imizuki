@@ -6,7 +6,7 @@
   <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "application" %>
   <%= stylesheet_link_tag "landscape", :media => "only screen and (max-device-width: 480px) and (orientation:landscape)" %>
-  <%# stylesheet_link_tag "iphone/landscape", :media => "only screen and (max-width: 900px)" %>
+  <%= stylesheet_link_tag "iphone/landscape", :media => "only screen and (max-width: 900px)" %>
   <%= stylesheet_link_tag "portrait", :media => "only screen and (max-device-width: 480px) and (orientation:portrait)" %>
   <%= stylesheet_link_tag "iphone/portrait", :media => "only screen and (max-width: 480px)" %>
   <%# stylesheet_link_tag "iphone/portrait" %>
@@ -15,18 +15,30 @@
 </head>
 <body>
 
+<!--
+<img src ="planets.gif" width="145" height="126" alt="Planets" usemap ="#planetmap" />
+
+<map name="planetmap">
+  <area shape="rect" coords="0,0,82,126" href="sun.htm" alt="Sun" />
+  <area shape="circle" coords="90,58,3" href="mercur.htm" alt="Mercury" />
+  <area shape="circle" coords="124,58,8" href="venus.htm" alt="Venus" />
+</map>
+-->
+
 <div id="contents_container">
-  <div id="contents">
+  <% if request.path == "/" %>
+    <%= link_to image_tag("red_moon_mizuki2.png", :id => :enter), events_path %>
+  <% end %>
+  <div id="contents" class="<%= request.path == "/" ? 'enter' : '' %>">
     <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, :id => "flash_#{name}", :class => "flash" %>
     <% end %>
 
-
-    <div id="site_nav_container">
+    <div id="site_nav_container" class="<%= request.path == "/" ? 'hide' : '' %>">
       <%= render 'layouts/user_nav' %>
       <%= render 'layouts/site_nav' %>
     </div>
-    <div id="main_container">
+    <div id="main_container" class="<%= request.path == "/" ? 'hide' : '' %>">
       <div id="main">
         <%= yield %>
       </div>

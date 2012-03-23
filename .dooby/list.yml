@@ -55,3 +55,5 @@ a1af23: !ruby/object:Dooby::Task
   todo: event in the center :done
 544ed4: !ruby/object:Dooby::Task 
   todo: pictures below event :done
+5c1477: !ruby/object:Dooby::Task 
+  todo: enter page :done
