@@ -27,6 +27,12 @@
 
 <div id="contents_container">
   <% if request.path == "/" %>
+    <div id="star1"><%= image_tag "star1.png" %></div>
+    <div id="star2"><%= image_tag "star2.png" %></div>
+    <div id="star3"><%= image_tag "star3.png" %></div>
+    <div id="star4"><%= image_tag "star4.png" %></div>
+    <div id="star5"><%= image_tag "star2.png" %></div>
+    <div id="star6"><%= image_tag "star4.png" %></div>
     <%= link_to image_tag("red_moon_mizuki2.png", :id => :enter), events_path %>
   <% end %>
   <div id="contents" class="<%= request.path == "/" ? 'enter' : '' %>">
