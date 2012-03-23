@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Layout', focus:true do
+describe 'Layout' do
   context "no user" do
     before(:each){ visit events_path }
 
