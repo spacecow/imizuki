@@ -71,7 +71,8 @@ describe 'Events, index' do
 
       it "notifies with a flahs message" do
         div(:event,0).click_link('Del')
-        page.should have_notice("Successfully deleted Event.")
+debug
+        page.should have_notice("Event was successfully deleted.")
       end
     end
   end
