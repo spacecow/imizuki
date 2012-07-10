@@ -15,6 +15,7 @@ gem 'redis'
 gem 'yajl-ruby'
 #gem "rb-inotify"
 #gem "libnotify"
+gem 'omniauth-facebook'
 
 # Gems used only for assets and not required
 # in production environments by default.
