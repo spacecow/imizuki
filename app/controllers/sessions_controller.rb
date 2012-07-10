@@ -28,7 +28,7 @@ class SessionsController < ApplicationController
 
   def iphone
     if @user
-      redirect_to events_path
+      redirect_to root_url
     end
   end
 end

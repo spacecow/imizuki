@@ -4,7 +4,7 @@ describe "Events" do
   describe "PUT /events" do
     before(:each) do
       login_admin
-      @event = Factory.create(:event, :title => "Opening")
+      @event = FactoryGirl.create(:event, :title => "Opening")
     end
 
     it "edit an event" do

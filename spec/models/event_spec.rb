@@ -2,12 +2,12 @@ require 'spec_helper'
 
 describe Event do
   before(:each) do
-    @event = Factory(:event)
+    @event = FactoryGirl.create(:event)
   end
 
   context "delete an event" do
     it "its pictures get deleted too" do
-      Factory(:picture, image:File.open("spec/rails.png"), event_id:@event.id)
+      FactoryGirl.create(:picture, image:File.open("spec/rails.png"), event_id:@event.id)
       lambda{ @event.destroy
       }.should change(Picture,:count).by(-1)
     end

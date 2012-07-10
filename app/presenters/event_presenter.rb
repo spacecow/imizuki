@@ -6,6 +6,6 @@ class EventPresenter < BasePresenter
   end
 
   def destroy_action
-    h.link_to h.jt(:del), event, confirm:h.sure?, :method => :delete if h.can? :destroy, event
+    h.link_to h.jt(:del), event, data:{confirm:h.sure?}, :method => :delete if h.can? :destroy, event
   end
 end

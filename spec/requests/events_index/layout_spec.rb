@@ -37,7 +37,7 @@ describe 'Events, index' do
   context "admin layout with events" do
     before(:each) do
       login_admin
-      @event = Factory(:event)
+      @event = FactoryGirl.create(:event)
       visit events_path
     end
     
@@ -69,16 +69,16 @@ describe 'Events, index' do
         current_path.should eq events_path
       end
 
-      it "notifies with a flahs message" do
+      it "notifies with a flash message" do
         div(:event,0).click_link('Del')
-        page.should have_notice("Successfully deleted Event.")
+        page.should have_notice("Event successfully deleted.")
       end
     end
   end
 
   context "no user layout with events, without pictures" do
     before(:each) do
-      Factory(:event,title:'Opening',start_date:Date.parse('2012-3-20'),content:"The opening of the homepage!")
+      FactoryGirl.create(:event,title:'Opening',start_date:Date.parse('2012-3-20'),content:"The opening of the homepage!")
       visit events_path
     end
 
@@ -132,8 +132,8 @@ describe 'Events, index' do
 
   context "no user layout with events, with pictures" do
     before(:each) do
-      event = Factory(:event)
-      Factory(:picture, image:File.open("spec/rails.png"), event_id:event.id)
+      event = FactoryGirl.create(:event)
+      FactoryGirl.create(:picture, image:File.open("spec/rails.png"), event_id:event.id)
       visit events_path
     end
 

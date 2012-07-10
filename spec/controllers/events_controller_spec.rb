@@ -3,7 +3,7 @@ require 'spec_helper'
 describe EventsController do
   controller_actions = controller_actions("events")
 
-  before(:each){ @model = Factory(:event) }
+  before(:each){ @model = FactoryGirl.create(:event) }
  
   describe "a user is not logged in" do
     controller_actions.each do |action,req|
